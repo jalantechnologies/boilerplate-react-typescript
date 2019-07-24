@@ -1,0 +1,14 @@
+{
+  "logger": {
+    "console": false
+  },
+  "papertrail": {
+    "host": "",
+    "port": "",
+    "handleExceptions": "",
+    "program": ""
+  },
+  "www": {
+    "port": 4200
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "papertrail": {
+    "host": "PAPERTRAIL_HOST",
+    "port": "PAPERTRAIL_PORT",
+    "program": "PAPERTRAIL_PROGRAM"
+  },
+  "public": {
+    "env": "NODE_ENV",
+    "apiEndpoint": "API_ENDPOINT",
+    "sentryDSN": "SENTRY_DSN",
+    "sentryENV": "SENTRY_ENV"
+  },
+  "www": {
+    "port": "PORT"
+  }
+}
