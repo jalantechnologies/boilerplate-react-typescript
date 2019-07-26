@@ -36,18 +36,11 @@
     "strictNullChecks": true,
     "resolveJsonModule": true
   },
-  "paths": {
-    "@config": [
-      "src/config.ts"
-    ],
-    "@components/*": [
-      "src/components/*"
-    ]
-  },
   "exclude": [
     "node_modules",
     "dist",
     "server",
-    "tests"
+    "__tests__",
+    "jest.config.js"
   ]
 }

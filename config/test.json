@@ -8,6 +8,9 @@
     "handleExceptions": "",
     "program": ""
   },
+  "public": {
+    "apiEndpoint": "ss"
+  },
   "www": {
     "port": 4200
   }

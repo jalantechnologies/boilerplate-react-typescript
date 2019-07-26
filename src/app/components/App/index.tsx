@@ -26,6 +26,7 @@ class App extends React.Component {
   }
 
   render(): React.ReactNode {
+    // injecting dependencies in components from here
     const dependencies = this.getDependencies();
     return (
       <div className="center-wrap">
