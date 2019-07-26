@@ -1,0 +1,20 @@
+.center-wrap {
+  text-align: center;
+}
+
+.logo {
+  width: 200px;
+}
+
+ul#menu li {
+  display:inline;
+  padding: 10px;
+}
+
+.user-list {
+  text-align: left;
+  width: 200px;
+  margin: auto;
+  border: 1px solid;
+  padding: 10px 20px;
+}

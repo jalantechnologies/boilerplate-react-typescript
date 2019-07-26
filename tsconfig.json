@@ -3,14 +3,23 @@
     "baseUrl": ".",
     "paths": {
       "@config": [
-        "src/config.ts"
+        "src/app/config.ts"
       ],
-      "@components/*": [
-        "src/components/*"
+      "@components": [
+        "src/app/components"
+      ],
+      "@models": [
+        "src/app/models"
       ],
       "@assets/*": [
-        "public/assets/*"
-      ]
+        "src/assets/*"
+      ],
+      "@services": [
+        "src/app/services"
+      ],
+      "@helpers": [
+        "src/app/helpers"
+      ],
     },
     "module": "commonjs",
     "target": "es5",
@@ -24,7 +33,8 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "resolveJsonModule": true
   },
   "paths": {
     "@config": [

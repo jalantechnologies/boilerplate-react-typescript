@@ -9,7 +9,7 @@
     "handleExceptions": true
   },
   "public": {
-    "apiEndpoint": "http://localhost:5000"
+    "apiEndpoint": "https://jsonplaceholder.typicode.com"
   },
   "www": {
     "port": "8000"

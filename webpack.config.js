@@ -7,18 +7,24 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CONFIG = config.has('public') ? config.get('public') : {};
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: './src/app/index.tsx',
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
     alias: {
-      '@config': path.resolve(__dirname, 'src/config.ts'),
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@assets': path.resolve(__dirname, 'public/assets'),
+      '@config': path.resolve(__dirname, 'src/app/config.ts'),
+      '@components': path.resolve(__dirname, 'src/app/components'),
+      '@models': path.resolve(__dirname, 'src/app/models'),
+      '@services': path.resolve(__dirname, 'src/app/services'),
+      '@helpers': path.resolve(__dirname, 'src/app/helpers'),
+      '@assets': path.resolve(__dirname, 'src/assets'),
     }
   },
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.min.js',
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -37,13 +43,13 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           'file-loader'
-        ]
+        ],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: './src/assets/index.html',
     }),
     new webpack.DefinePlugin({
       CONFIG: JSON.stringify(CONFIG),
