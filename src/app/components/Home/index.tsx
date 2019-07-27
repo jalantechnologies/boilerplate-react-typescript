@@ -1,8 +1,13 @@
 
 import * as React from 'react';
 
-import {AppNavigationScreenProps} from '@helpers';
-const Hello = (props: {text: string}): JSX.Element => {
+import {AppDependenciesProps, DependencyInjector} from '@helpers';
+
+import {HomeProps} from './home-props';
+
+type HomeComponentProps = HomeProps & AppDependenciesProps;
+
+const Hello = (props: HomeProps): JSX.Element => {
   return (
     <h3>
       {props.text}
@@ -10,8 +15,8 @@ const Hello = (props: {text: string}): JSX.Element => {
   )
 }
 
-class HomeComponent extends React.Component<AppNavigationScreenProps> {
-  constructor(props: any) {
+class HomeComponent extends React.Component<HomeComponentProps> {
+  constructor(props: HomeComponentProps) {
     super(props);
   }
 
@@ -22,4 +27,4 @@ class HomeComponent extends React.Component<AppNavigationScreenProps> {
   }
 }
 
-export default HomeComponent;
+export default DependencyInjector(HomeComponent);

@@ -36,18 +36,29 @@ Only `public.*` entries are accessible via client. Entries marked with `REQUIRED
 - `papertrail.port` `String` - If provided, logging via [Papertrail](https://papertrail.com) will be enabled.
 - `papertrail.program` `String` - Papertrail program. Useful for prefixing log messages with custom namespace.
 - `papertrail.handleExceptions` `Boolean` - For enabling logging of un-handled exceptions via papertrail. (Default: `false`)
+- `public.env` `String` - Set Environment for the app
 - `public.apiEndpoint` `String` - URL for API endpoint.
 - `public.sentryDSN` `String` - API key for [Sentry](https://sentry.io)
 - `public.sentryENV` `String` - Environment for [Sentry](https://sentry.io)
 - `www.port` `String` - Port for listening incoming HTTP connection.
 
+## Linting
+
+Added Linting using esline
+Run `npm run line` to run linting
+
 ## Unit tests
 
-Will add this in future releasess.
+Added Unit testing using Jest, Enzyme
+Run `npm run test` to run test cases
+
 
 ## Features
 
 - TypeScript support, Webpack 4
-- Error reporting via sentry.
+- Error reporting via Sentry.
+- Unit Testing using Jest, Enzyme
+- Continous Integration using CircleCI
+- Internationalization support `react-i18next (i18next)`
+- Dependency Injection (see `src/app/helpers/dependency-hoc.tsx`)
 - Heroku deployment ready (see `app.json` and `Procfile`)
-- Internationalization support.

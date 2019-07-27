@@ -1,12 +1,13 @@
 import * as React from 'react';
 
 import {User} from '@models';
-import {AppNavigationScreenProps} from '@helpers';
+import {AppDependenciesProps, DependencyInjector} from '@helpers';
 
 import {ComponentViewState} from '@helpers';
 import {UserState} from './user-state';
 import {UserProps} from './user-props';
 
+type UserComponentProps = UserProps & AppDependenciesProps;
 
 const Users = (props: UserProps): JSX.Element => {
   const {users} = props.users;
@@ -24,8 +25,8 @@ const Users = (props: UserProps): JSX.Element => {
   )
 }
 
-class UsersComponent extends React.Component<AppNavigationScreenProps, UserState>{
-  constructor(props: AppNavigationScreenProps) {
+class UsersComponent extends React.Component<UserComponentProps, UserState>{
+  constructor(props: UserComponentProps) {
     super(props);
     this.state = {
       componentState: ComponentViewState.DEFAULT,
@@ -83,4 +84,4 @@ class UsersComponent extends React.Component<AppNavigationScreenProps, UserState
   }
 }
 
-export default UsersComponent;
+export default DependencyInjector(UsersComponent);

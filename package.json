@@ -9,9 +9,9 @@
     "heroku-postbuild": "npm run build",
     "lint": "eslint --fix ./src/**/*.ts[x]",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "pre-commit": "npm run lint && npm run test"
+    "test:watch": "jest --watch"
   },
+  "precommit": "lint, test",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jalantechnologies/boilerplate-react-typescript.git"
@@ -60,6 +60,7 @@
     "file-loader": "^4.1.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.8.0",
+    "pre-commit": "^1.2.2",
     "style-loader": "^0.23.1",
     "ts-jest": "^24.0.2",
     "ts-loader": "^6.0.4",
