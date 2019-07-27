@@ -58,7 +58,7 @@ Run `npm run test` to run test cases
 - TypeScript support, Webpack 4
 - Error reporting via Sentry.
 - Unit Testing using Jest, Enzyme
-- Continous Integration using CircleCI
+- Continuous Integration using CircleCI
 - Internationalization support `react-i18next (i18next)`
 - Dependency Injection (see `src/app/helpers/dependency-hoc.tsx`)
-- Heroku deployment ready (see `app.json` and `Procfile`)
+- Heroku deployment-ready (see `app.json` and `Procfile`)
