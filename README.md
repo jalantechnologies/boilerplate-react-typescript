@@ -55,7 +55,7 @@ Run `npm run test` to run test cases
 
 ## Features
 
-- TypeScript support, Webpack 4
+- TypeScript support, Webpack 4, React Router
 - Error reporting via Sentry.
 - Unit Testing using Jest, Enzyme
 - Continuous Integration using CircleCI
