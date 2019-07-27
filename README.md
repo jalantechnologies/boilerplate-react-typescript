@@ -36,7 +36,7 @@ Only `public.*` entries are accessible via client. Entries marked with `REQUIRED
 - `papertrail.port` `String` - If provided, logging via [Papertrail](https://papertrail.com) will be enabled.
 - `papertrail.program` `String` - Papertrail program. Useful for prefixing log messages with custom namespace.
 - `papertrail.handleExceptions` `Boolean` - For enabling logging of un-handled exceptions via papertrail. (Default: `false`)
-- `public.env` `String` - Set Environment for the app
+- `public.env` `String` - Environment for the app
 - `public.apiEndpoint` `String` - URL for API endpoint.
 - `public.sentryDSN` `String` - API key for [Sentry](https://sentry.io)
 - `public.sentryENV` `String` - Environment for [Sentry](https://sentry.io)
@@ -44,8 +44,8 @@ Only `public.*` entries are accessible via client. Entries marked with `REQUIRED
 
 ## Linting
 
-Added Linting using esline
-Run `npm run line` to run linting
+Added Linting using eslint
+Run `npm run lint` to run linting
 
 ## Unit tests
 
