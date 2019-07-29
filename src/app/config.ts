@@ -3,10 +3,6 @@ declare const CONFIG: {
   apiEndpoint: string;
   sentryDSN: string;
   sentryENV: string;
-  serverLogUrl: string;
-  intercomAppId: string;
-  mixpanelToken: string;
-  gaTrackingId: string;
 };
 
 export default CONFIG;
