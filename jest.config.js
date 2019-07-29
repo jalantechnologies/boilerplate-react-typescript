@@ -9,7 +9,7 @@ module.exports = {
   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   snapshotSerializers: ["enzyme-to-json/serializer"],
-  setupFilesAfterEnv: ["<rootDir>/src/app/setupTests.ts"],
+  setupFilesAfterEnv: ["<rootDir>/src/app/setup-tests.ts"],
   moduleNameMapper: {
     "@config(.*)$": "<rootDir>/src/app/config.ts",
     "@components(.*)$": "<rootDir>/src/app/components/$1",

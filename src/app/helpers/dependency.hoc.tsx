@@ -1,24 +1,23 @@
 import * as React from 'react';
 import i18next from 'i18next';
 
-import {UserService, UserServiceType} from '@services';
+import {UserServiceImpl, UserService} from '@services';
 import {AppDependenciesProps, i18n} from '@helpers';
+
+// init dependencies
+const userService: UserService = new UserServiceImpl();
+const translation: i18next.i18n = i18n;
 
 const DependencyInjector = <P extends AppDependenciesProps>(
   Component: React.ComponentType<P>
 ): typeof React.Component =>
-  class MakeCounter extends React.Component<P, AppDependenciesProps> {
-    userService: UserServiceType;
-    translation: i18next.i18n;
-
+  class Injector extends React.Component<P, AppDependenciesProps> {
     constructor(props: any) {
       super(props);
-      this.translation = i18n;
-      this.userService = new UserService();
     }
 
     getDependencies(): AppDependenciesProps {
-      const {userService, translation} = this;
+      //const {userService, translation} = this;
       return {
         userService,
         translation,

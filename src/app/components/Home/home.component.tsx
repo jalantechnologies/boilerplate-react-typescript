@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import {AppDependenciesProps, DependencyInjector} from '@helpers';
 
-import {HomeProps} from './home-props';
+import {HomeProps} from './home.props';
 
 type HomeComponentProps = HomeProps & AppDependenciesProps;
 

@@ -6,7 +6,7 @@
     "host": null,
     "port": null,
     "handleExceptions": true,
-    "program": "api-production"
+    "program": "webapp-production"
   },
   "public": {
     "sentryENV": "production"

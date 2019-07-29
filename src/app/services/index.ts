@@ -1,2 +1,2 @@
-export {default as UserService} from './user';
-export {UserServiceType} from './user/types';
+export {default as UserServiceImpl} from './user/user.service.impl';
+export {UserService} from './user/user.service';

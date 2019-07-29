@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {shallow} from 'enzyme';
 
-import HomeComponent from './index';
+import HomeComponent from './home.component';
 
 describe('HomeComponent', (): void => {
   it('should display HELLO_WORD', (): void => {

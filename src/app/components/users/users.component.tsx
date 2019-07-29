@@ -4,8 +4,10 @@ import {User} from '@models';
 import {AppDependenciesProps, DependencyInjector} from '@helpers';
 
 import {ComponentViewState} from '@helpers';
-import {UserState} from './user-state';
-import {UserProps} from './user-props';
+import {UserState} from './users.state';
+import {UserProps} from './users.props';
+
+import './users.styles.css';
 
 type UserComponentProps = UserProps & AppDependenciesProps;
 

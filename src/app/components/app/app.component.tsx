@@ -1,8 +1,10 @@
 
 import * as React from 'react';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 
 import {UsersComponent, HomeComponent} from '@components';
+
+import './app.styles.css';
 
 class App extends React.Component {
   render(): React.ReactNode {

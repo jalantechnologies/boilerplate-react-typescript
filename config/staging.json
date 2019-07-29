@@ -6,7 +6,7 @@
     "host": null,
     "port": null,
     "handleExceptions": true,
-    "program": "api-staging"
+    "program": "webapp-staging"
   },
   "public": {
     "sentryENV": "staging"
