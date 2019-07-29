@@ -17,7 +17,6 @@ const DependencyInjector = <P extends AppDependenciesProps>(
     }
 
     getDependencies(): AppDependenciesProps {
-      //const {userService, translation} = this;
       return {
         userService,
         translation,
