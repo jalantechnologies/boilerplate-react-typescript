@@ -1,0 +1,17 @@
+{
+  "logger": {
+    "console": false
+  },
+  "papertrail": {
+    "host": "",
+    "port": "",
+    "handleExceptions": "",
+    "program": ""
+  },
+  "public": {
+    "apiEndpoint": "ss"
+  },
+  "www": {
+    "port": 4200
+  }
+}

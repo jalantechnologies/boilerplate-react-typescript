@@ -1,0 +1,17 @@
+{
+  "logger": {
+    "console": true
+  },
+  "papertrail": {
+    "host": "",
+    "port": "",
+    "program": "",
+    "handleExceptions": true
+  },
+  "public": {
+    "apiEndpoint": "https://jsonplaceholder.typicode.com"
+  },
+  "www": {
+    "port": "8000"
+  }
+}

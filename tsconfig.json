@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@config": [
+        "src/app/config.ts"
+      ],
+      "@components": [
+        "src/app/components"
+      ],
+      "@models": [
+        "src/app/models"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@services": [
+        "src/app/services"
+      ],
+      "@helpers": [
+        "src/app/helpers"
+      ],
+    },
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "rootDir": ".",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "server",
+    "__tests__"
+  ]
+}

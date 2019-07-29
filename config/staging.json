@@ -1,0 +1,14 @@
+{
+  "logger": {
+    "console": false
+  },
+  "papertrail": {
+    "host": null,
+    "port": null,
+    "handleExceptions": true,
+    "program": "webapp-staging"
+  },
+  "public": {
+    "sentryENV": "staging"
+  }
+}
