@@ -3,6 +3,7 @@ import * as React from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 
 import {UsersComponent, HomeComponent} from '@components';
+import {PrivateRoute} from '@helpers';
 
 import './app.styles.css';
 
@@ -25,7 +26,7 @@ class App extends React.Component {
             </nav>
             <Switch>
               <Route exact path="/" component={HomeComponent} />
-              <Route exact path="/users" component={UsersComponent} />
+              <PrivateRoute exact path="/users" component={UsersComponent} />
             </Switch>
           </div>
         </Router>

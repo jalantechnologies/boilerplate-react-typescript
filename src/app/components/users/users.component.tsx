@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {User} from '@models';
-import {AppDependenciesProps, DependencyInjector} from '@helpers';
+import {AppProps, DependencyInjector} from '@helpers';
 
 import {ComponentViewState} from '@helpers';
 import {UserState} from './users.state';
@@ -9,7 +9,7 @@ import {UserProps} from './users.props';
 
 import './users.styles.css';
 
-type UserComponentProps = UserProps & AppDependenciesProps;
+type UserComponentProps = UserProps & AppProps;
 
 const Users = (props: UserProps): JSX.Element => {
   const {users} = props.users;
@@ -34,6 +34,13 @@ class UsersComponent extends React.Component<UserComponentProps, UserState>{
       componentState: ComponentViewState.DEFAULT,
     }
     this.fetchUsers = this.fetchUsers.bind(this);
+    this.logout = this.logout.bind(this);
+  }
+
+  logout(): void {
+    this.props.authService.logout();
+    // redirect to login page
+    this.props.history.push('/');
   }
 
   async fetchUsers(): Promise<void> {
@@ -61,6 +68,8 @@ class UsersComponent extends React.Component<UserComponentProps, UserState>{
 
   render(): React.ReactNode {
     const {componentState, users, error} = this.state;
+    const {translation} = this.props;
+
     const isLoaded = componentState === ComponentViewState.LOADED;
     const isLoading = componentState === ComponentViewState.LOADING;
     const isError = componentState === ComponentViewState.ERROR;
@@ -68,10 +77,12 @@ class UsersComponent extends React.Component<UserComponentProps, UserState>{
     return (
       <div>
         <h3>
-          {this.props.translation.t('LABLE_USERS')}
+          {translation.t('LABLE_USERS')}
         </h3>
+        <button onClick={this.logout}>Logout</button>
+        <br/><br/>
         {
-          isLoading && <span>{this.props.translation.t('LABEL_LOADING_USERS')}</span>
+          isLoading && <span>{translation.t('LABEL_LOADING_USERS')}</span>
         }
         {
           isLoaded && users &&

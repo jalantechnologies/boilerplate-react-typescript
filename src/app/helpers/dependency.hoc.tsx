@@ -1,17 +1,18 @@
 import * as React from 'react';
 import i18next from 'i18next';
 
-import {UserServiceImpl, UserService} from '@services';
-import {AppDependenciesProps, i18n} from '@helpers';
+import {UserServiceImpl, UserService, AuthService, AuthServiceImpl} from '@services';
+import {AppDependenciesProps, AppProps, i18n} from '@helpers';
 
 // init dependencies
 const userService: UserService = new UserServiceImpl();
+const authService: AuthService = new AuthServiceImpl();
 const translation: i18next.i18n = i18n;
 
-const DependencyInjector = <P extends AppDependenciesProps>(
+const DependencyInjector = <P extends AppProps>(
   Component: React.ComponentType<P>
 ): typeof React.Component =>
-  class Injector extends React.Component<P, AppDependenciesProps> {
+  class Injector extends React.Component<P, AppProps> {
     constructor(props: any) {
       super(props);
     }
@@ -20,6 +21,7 @@ const DependencyInjector = <P extends AppDependenciesProps>(
       return {
         userService,
         translation,
+        authService,
       };
     }
     render(): React.ReactNode {
