@@ -1,5 +1,7 @@
 {
   "HELLO_WORD": "Bonjour le monde",
   "LABLE_USERS": "utilisateurs",
-  "LABEL_LOADING_USERS": "Chargement des utilisateurs..."
+  "LABEL_LOADING_USERS": "Chargement des utilisateurs...",
+  "USERNAME_INVALID": "Nom d'utilisateur est nécessaire",
+  "PASSWORD_INVALID": "Mot de passe requis"
 }
