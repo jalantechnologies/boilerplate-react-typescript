@@ -10,8 +10,8 @@ interface PrivateRouteProps extends AppProps {
 }
 
 const PrivateRoute = (props: PrivateRouteProps): JSX.Element => {
-  const {component: Component, dependencies, ...rest} = props;
-  const isLoggedIn = dependencies.authService.isLoggedIn();
+  const {component: Component, ...rest} = props;
+  const isLoggedIn = props.authService.isLoggedIn();
   return (
     <Route
       {...rest}

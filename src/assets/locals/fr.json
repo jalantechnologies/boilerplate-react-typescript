@@ -2,6 +2,6 @@
   "HELLO_WORD": "Bonjour le monde",
   "LABLE_USERS": "utilisateurs",
   "LABEL_LOADING_USERS": "Chargement des utilisateurs...",
-  "USERNAME_INVALID": "Nom d'utilisateur est nécessaire",
-  "PASSWORD_INVALID": "Mot de passe requis"
+  "USERNAME_INVALID": "Merci d'entrer un nom d'utilisateur valide",
+  "PASSWORD_INVALID": "Entrer un mot de passe valide s'il vous plait"
 }

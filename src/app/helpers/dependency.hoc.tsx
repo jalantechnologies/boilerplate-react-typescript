@@ -28,7 +28,7 @@ const DependencyInjector = <P extends AppProps>(
       // injecting dependencies in components from here
       const dependencies = this.getDependencies();
       return (
-        <Component {...this.props} dependencies={dependencies} />
+        <Component {...this.props} {...dependencies} />
       );
     }
   };

@@ -46,15 +46,15 @@ class HomeComponent extends React.Component<HomeComponentProps, HomeState> {
 
     const {username, password} = this.state;
     if (username && password) {
-      this.props.dependencies.authService.login({username, password});
+      this.props.authService.login();
       // redirect to users page
       this.props.history.push('/users');
     }
   }
 
   render(): React.ReactNode {
-    const { username, password, submitted } = this.state;
-    const {dependencies: {translation}} = this.props;
+    const {username, password, submitted} = this.state;
+    const {translation} = this.props;
     return (
       <div>
         <Hello text={translation.t('HELLO_WORD')} />

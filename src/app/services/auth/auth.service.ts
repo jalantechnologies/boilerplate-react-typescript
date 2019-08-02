@@ -1,5 +1,5 @@
 export interface AuthService {
-  login: (params: any) => void;
+  login: () => void;
   logout: () => void;
   isLoggedIn: () => boolean;
 }

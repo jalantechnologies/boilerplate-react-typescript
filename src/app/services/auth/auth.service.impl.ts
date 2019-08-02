@@ -6,8 +6,7 @@ import {AuthService} from './auth.service';
 export default class AuthServiceImpl extends APIServiceImpl implements AuthService {
   static readonly RESOURCE = '/users';
 
-  login(params: any): void {
-    console.log(params);
+  login(): void {
     localStorage.setItem('login', 'true');
   }
 

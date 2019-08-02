@@ -38,7 +38,7 @@ class UsersComponent extends React.Component<UserComponentProps, UserState>{
   }
 
   logout(): void {
-    this.props.dependencies.authService.logout();
+    this.props.authService.logout();
     // redirect to login page
     this.props.history.push('/');
   }
@@ -47,7 +47,7 @@ class UsersComponent extends React.Component<UserComponentProps, UserState>{
     this.setState({
       componentState: ComponentViewState.LOADING,
     });
-    const response = await this.props.dependencies.userService.getUsers();
+    const response = await this.props.userService.getUsers();
     if (response.hasData()
       && response.data) {
       this.setState({
@@ -68,7 +68,7 @@ class UsersComponent extends React.Component<UserComponentProps, UserState>{
 
   render(): React.ReactNode {
     const {componentState, users, error} = this.state;
-    const {dependencies: {translation}} = this.props;
+    const {translation} = this.props;
 
     const isLoaded = componentState === ComponentViewState.LOADED;
     const isLoading = componentState === ComponentViewState.LOADING;
