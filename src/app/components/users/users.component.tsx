@@ -1,7 +1,8 @@
 import * as React from 'react';
+import {useAsyncEffect} from 'use-async-effect';
 
 import {User} from '@models';
-import {AppProps, DependencyInjector} from '@helpers';
+import {DependencyInjector, AppProps} from '@hoc';
 
 import {ComponentViewState} from '@helpers';
 import {UserState} from './users.state';
@@ -27,74 +28,65 @@ const Users = (props: UserProps): JSX.Element => {
   )
 }
 
-class UsersComponent extends React.Component<UserComponentProps, UserState>{
-  constructor(props: UserComponentProps) {
-    super(props);
-    this.state = {
-      componentState: ComponentViewState.DEFAULT,
-    }
-    this.fetchUsers = this.fetchUsers.bind(this);
-    this.logout = this.logout.bind(this);
-  }
+const UsersComponent = (props: UserComponentProps): JSX.Element => {
+  const {translation} = props;
+  const [state, setComponentState] = React.useState<UserState>({
+    componentState: ComponentViewState.DEFAULT
+  });
 
-  logout(): void {
-    this.props.authService.logout();
+  const {componentState, users, error} = state;
+  const isLoaded = componentState === ComponentViewState.LOADED;
+  const isLoading = componentState === ComponentViewState.LOADING;
+  const isError = componentState === ComponentViewState.ERROR;
+
+  const logout = (): void => {
+    props.authService.logout();
     // redirect to login page
-    this.props.history.push('/');
+    props.history.push('/');
   }
 
-  async fetchUsers(): Promise<void> {
-    this.setState({
-      componentState: ComponentViewState.LOADING,
-    });
-    const response = await this.props.userService.getUsers();
+  const fetchUsers = async(): Promise<void> => {
+    setComponentState({componentState: ComponentViewState.LOADING});
+    const response = await props.userService.getUsers();
     if (response.hasData()
       && response.data) {
-      this.setState({
+      setComponentState({
         componentState: ComponentViewState.LOADED,
         users: response.data,
       });
     } else {
-      //const msg = response.error || this.translate('no_internet');
-      this.setState({
+      const msg = response.error || translation.t('no_internet');
+      setComponentState({
         componentState: ComponentViewState.ERROR,
-        error: response.error,
+        error: msg,
       });
     }
   }
-  async componentDidMount(): Promise<void> {
-    this.fetchUsers();
-  }
 
-  render(): React.ReactNode {
-    const {componentState, users, error} = this.state;
-    const {translation} = this.props;
+  useAsyncEffect(async (): Promise<void> => {
+    await fetchUsers();
+  }, [])
 
-    const isLoaded = componentState === ComponentViewState.LOADED;
-    const isLoading = componentState === ComponentViewState.LOADING;
-    const isError = componentState === ComponentViewState.ERROR;
-
-    return (
-      <div>
-        <h3>
-          {translation.t('LABLE_USERS')}
-        </h3>
-        <button onClick={this.logout}>Logout</button>
-        <br/><br/>
-        {
-          isLoading && <span>{translation.t('LABEL_LOADING_USERS')}</span>
-        }
-        {
-          isLoaded && users &&
-          <Users users={users}/>
-        }
-        {
-          isError &&
-          <div> {error} </div>
-        }
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h3>
+        {translation.t('LABLE_USERS')}
+      </h3>
+      <button onClick={logout}>Logout</button>
+      <br/><br/>
+      {
+        isLoading && <span>{translation.t('LABEL_LOADING_USERS')}</span>
+      }
+      {
+        isLoaded && users &&
+        <Users users={users}/>
+      }
+      {
+        isError &&
+        <div> {error} </div>
+      }
+    </div>
+  );
 }
 
 export default DependencyInjector(UsersComponent);

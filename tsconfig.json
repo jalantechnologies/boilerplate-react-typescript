@@ -20,6 +20,9 @@
       "@helpers": [
         "src/app/helpers"
       ],
+      "@hoc": [
+        "src/app/hoc"
+      ],
     },
     "module": "commonjs",
     "target": "es5",

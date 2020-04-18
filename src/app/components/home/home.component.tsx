@@ -1,10 +1,9 @@
 
 import * as React from 'react';
 
-import {AppProps, DependencyInjector} from '@helpers';
+import {DependencyInjector, AppProps} from '@hoc';
 
 import {HomeProps} from './home.props';
-import {HomeState} from './home.state';
 
 import './home.styles.css';
 type HomeComponentProps = HomeProps & AppProps;
@@ -17,69 +16,59 @@ const Hello = (props: HomeProps): JSX.Element => {
   )
 }
 
-class HomeComponent extends React.Component<HomeComponentProps, HomeState> {
-  constructor(props: HomeComponentProps) {
-    super(props);
-    this.state = {
-      username: "",
-      password: "",
-      submitted: false,
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+const HomeComponent = (props: HomeComponentProps): JSX.Element => {
+  const [username, setUsername] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
+  const [submitted, setSubmitted] = React.useState<boolean>(false);
+
+  const {translation} = props;
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    setSubmitted(true);
+
+    if (username && password) {
+      props.authService.login();
+      // redirect to users page
+      props.history.push('/users');
+    }
   }
 
-  handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void  => {
     switch (e.target.id) {
       case 'username':
-        this.setState({username: e.target.value});
+        setUsername(e.target.value);
         break;
       case 'password':
-        this.setState({password: e.target.value});
+        setPassword(e.target.value);
         break;
     }
   }
 
-  handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
-    e.preventDefault();
-    this.setState({submitted: true});
-
-    const {username, password} = this.state;
-    if (username && password) {
-      this.props.authService.login();
-      // redirect to users page
-      this.props.history.push('/users');
-    }
-  }
-
-  render(): React.ReactNode {
-    const {username, password, submitted} = this.state;
-    const {translation} = this.props;
-    return (
-      <div>
-        <Hello text={translation.t('HELLO_WORD')} />
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="username"></label>
-            <input type="text" onChange={this.handleChange} placeholder="username (any)" id="username" />
-            {submitted && !username &&
-              <div className="text-error">{translation.t('USERNAME_INVALID')}</div>
-            }
-          </div>
-          <br />
-          <div>
-            <label htmlFor="password"></label>
-            <input type="password" onChange={this.handleChange} placeholder="password (any)" id="password" />
-            {submitted && !password &&
-              <div className="text-error">{translation.t('PASSWORD_INVALID')}</div>
-            }
-          </div>
-          <br />
-          <button>Login</button>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Hello text={translation.t('HELLO_WORD')} />
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="username"></label>
+          <input type="text" onChange={handleChange} placeholder="username (any)" id="username" />
+          {submitted && !username &&
+            <div className="text-error">{translation.t('USERNAME_INVALID')}</div>
+          }
+        </div>
+        <br />
+        <div>
+          <label htmlFor="password"></label>
+          <input type="password" onChange={handleChange} placeholder="password (any)" id="password" />
+          {submitted && !password &&
+            <div className="text-error">{translation.t('PASSWORD_INVALID')}</div>
+          }
+        </div>
+        <br />
+        <button>Login</button>
+      </form>
+    </div>
+  );
 }
 
 export default DependencyInjector(HomeComponent);

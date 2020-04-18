@@ -2,8 +2,8 @@ import * as React from 'react';
 import i18next from 'i18next';
 
 import {UserServiceImpl, UserService, AuthService, AuthServiceImpl} from '@services';
-import {AppDependenciesProps, AppProps, i18n} from '@helpers';
-
+import {i18n} from '@helpers';
+import {AppDependenciesProps, AppProps} from './dependencies.props';
 // init dependencies
 const userService: UserService = new UserServiceImpl();
 const authService: AuthService = new AuthServiceImpl();

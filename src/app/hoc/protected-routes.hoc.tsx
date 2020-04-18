@@ -3,7 +3,8 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import {AppProps, DependencyInjector} from '@helpers';
+import {AppProps} from './dependencies.props';
+import DependencyInjector from './dependency.hoc';
 
 interface PrivateRouteProps extends AppProps {
   component: typeof React.Component;
