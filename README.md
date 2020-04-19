@@ -55,10 +55,12 @@ Run `npm run test` to run test cases
 
 ## Features
 
-- TypeScript support, Webpack 4, React Router
+- Complete codebase is using React Hooks
+- TypeScript support, Webpack 4
+- React Router with Protected Routes
 - Error reporting via Sentry.
 - Unit Testing using Jest, Enzyme
 - Continuous Integration using CircleCI
 - Internationalization support `react-i18next (i18next)`
-- Dependency Injection (see `src/app/helpers/dependency-hoc.tsx`)
+- Dependency Injection using React Context (see `src/app/helpers/dependency.context.tsx`)
 - Heroku deployment-ready (see `app.json` and `Procfile`)

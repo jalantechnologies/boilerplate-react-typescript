@@ -16,8 +16,12 @@ module.exports = {
     "@models(.*)$": "<rootDir>/src/app/models/$1",
     "@services(.*)$": "<rootDir>/src/app/services/$1",
     "@helpers(.*)$": "<rootDir>/src/app/helpers/$1",
+    "@hoc(.*)$": "<rootDir>/src/app/hoc/$1",
     "@assets(.*)$": "<rootDir>/src/assets/$1",
-    "i18next": "<rootDir>/src/app/helpers/__mocks__/i18n.ts"
+
+    // mocks
+    "i18next": "<rootDir>/src/app/helpers/__mocks__/i18n.ts",
+    "\\.css$": "<rootDir>/__mocks__/style-mocks.ts"
   },
   resolver: null,
   globals: {
