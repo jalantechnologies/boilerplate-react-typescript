@@ -2,17 +2,19 @@ import * as React from 'react';
 import {
   Route,
   Redirect,
+  RouteProps,
+  RouteComponentProps,
 } from 'react-router-dom';
-import {AppProps} from './dependencies.props';
-import DependencyInjector from './dependency.hoc';
+import {DIContext} from '@helpers';
 
-interface PrivateRouteProps extends AppProps {
-  component: typeof React.Component;
+interface PrivateRouteProps extends RouteProps {
+  component: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>;
 }
 
 const PrivateRoute = (props: PrivateRouteProps): JSX.Element => {
+  const dependencies = React.useContext(DIContext);
   const {component: Component, ...rest} = props;
-  const isLoggedIn = props.authService.isLoggedIn();
+  const isLoggedIn = dependencies.authService.isLoggedIn();
   return (
     <Route
       {...rest}
@@ -25,4 +27,4 @@ const PrivateRoute = (props: PrivateRouteProps): JSX.Element => {
   );
 };
 
-export default DependencyInjector(PrivateRoute);
+export default PrivateRoute;

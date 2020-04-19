@@ -2,9 +2,8 @@ import * as React from 'react';
 import {useAsyncEffect} from 'use-async-effect';
 
 import {User} from '@models';
-import {DependencyInjector, AppProps} from '@hoc';
 
-import {ComponentViewState} from '@helpers';
+import {ComponentViewState, AppProps, DIContext} from '@helpers';
 import {UserState} from './users.state';
 import {UserProps} from './users.props';
 
@@ -29,7 +28,9 @@ const Users = (props: UserProps): JSX.Element => {
 }
 
 const UsersComponent = (props: UserComponentProps): JSX.Element => {
-  const {translation} = props;
+  const dependencies = React.useContext(DIContext);
+
+  const {translation, authService, userService} = dependencies;
   const [state, setComponentState] = React.useState<UserState>({
     componentState: ComponentViewState.DEFAULT
   });
@@ -40,14 +41,14 @@ const UsersComponent = (props: UserComponentProps): JSX.Element => {
   const isError = componentState === ComponentViewState.ERROR;
 
   const logout = (): void => {
-    props.authService.logout();
+    authService.logout();
     // redirect to login page
     props.history.push('/');
   }
 
   const fetchUsers = async(): Promise<void> => {
     setComponentState({componentState: ComponentViewState.LOADING});
-    const response = await props.userService.getUsers();
+    const response = await userService.getUsers();
     if (response.hasData()
       && response.data) {
       setComponentState({
@@ -65,7 +66,7 @@ const UsersComponent = (props: UserComponentProps): JSX.Element => {
 
   useAsyncEffect(async (): Promise<void> => {
     await fetchUsers();
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -89,4 +90,4 @@ const UsersComponent = (props: UserComponentProps): JSX.Element => {
   );
 }
 
-export default DependencyInjector(UsersComponent);
+export default UsersComponent;

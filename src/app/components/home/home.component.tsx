@@ -1,12 +1,11 @@
 
 import * as React from 'react';
 
-import {DependencyInjector, AppProps} from '@hoc';
+import {AppProps, DIContext} from '@helpers';
 
 import {HomeProps} from './home.props';
 
 import './home.styles.css';
-type HomeComponentProps = HomeProps & AppProps;
 
 const Hello = (props: HomeProps): JSX.Element => {
   return (
@@ -16,19 +15,20 @@ const Hello = (props: HomeProps): JSX.Element => {
   )
 }
 
-const HomeComponent = (props: HomeComponentProps): JSX.Element => {
+const HomeComponent = (props: AppProps): JSX.Element => {
   const [username, setUsername] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
   const [submitted, setSubmitted] = React.useState<boolean>(false);
 
-  const {translation} = props;
+  const dependencies = React.useContext(DIContext);
+  const {translation, authService} = dependencies;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     setSubmitted(true);
 
     if (username && password) {
-      props.authService.login();
+      authService.login();
       // redirect to users page
       props.history.push('/users');
     }
@@ -71,4 +71,4 @@ const HomeComponent = (props: HomeComponentProps): JSX.Element => {
   );
 }
 
-export default DependencyInjector(HomeComponent);
+export default HomeComponent;
