@@ -16,6 +16,7 @@ module.exports = {
     "@models(.*)$": "<rootDir>/src/app/models/$1",
     "@services(.*)$": "<rootDir>/src/app/services/$1",
     "@helpers(.*)$": "<rootDir>/src/app/helpers/$1",
+    "@hoc(.*)$": "<rootDir>/src/app/hoc/$1",
     "@assets(.*)$": "<rootDir>/src/assets/$1",
 
     // mocks

@@ -9,5 +9,4 @@ export interface AppDependenciesProps {
   translation: i18next.i18n;
 }
 
-export interface AppProps extends RouteComponentProps, AppDependenciesProps {
-}
+export type AppProps = RouteComponentProps;

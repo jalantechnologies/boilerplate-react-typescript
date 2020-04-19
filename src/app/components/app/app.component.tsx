@@ -3,13 +3,14 @@ import * as React from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 
 import {UsersComponent, HomeComponent} from '@components';
-import {PrivateRoute} from '@helpers';
+import {PrivateRoute} from '@hoc';
+import {DIContext, getDependencies} from '@helpers';
 
 import './app.styles.css';
 
-class App extends React.Component {
-  render(): React.ReactNode {
-    return (
+const App = (): JSX.Element => {
+  return (
+    <DIContext.Provider value={getDependencies()}>
       <div className="center-wrap">
         <Router>
           <div>
@@ -31,8 +32,8 @@ class App extends React.Component {
           </div>
         </Router>
       </div>
-    );
-  }
+    </DIContext.Provider>
+  );
 }
 
 export default App;

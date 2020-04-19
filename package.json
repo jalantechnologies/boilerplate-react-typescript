@@ -38,6 +38,7 @@
     "react-dom": "^16.8.6",
     "react-i18next": "^10.11.4",
     "react-router-dom": "^5.0.1",
+    "use-async-effect": "^2.2.2",
     "winston": "^2.4.3",
     "winston-papertrail": "^1.0.5"
   },
