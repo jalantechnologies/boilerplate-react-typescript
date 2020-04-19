@@ -1,6 +1,6 @@
 {
   "name": "boilerplate-react-typescript",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Boilerplate for React+TypeScript",
   "scripts": {
     "serve": "webpack-dev-server --mode development --open --hot",
