@@ -29,7 +29,7 @@
   "homepage": "https://github.com/jalantechnologies/boilerplate-react-typescript#readme",
   "dependencies": {
     "@sentry/browser": "^5.5.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "config": "^3.2.2",
     "express": "^4.17.1",
     "i18next": "^17.0.6",
